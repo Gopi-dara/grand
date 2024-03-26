@@ -1,0 +1,44 @@
+function calculateTip(totalBill, satisfactionLevel, numOfPeople) {
+    // Calculate tip based on satisfaction level
+    let tipPercentage;
+    switch (satisfactionLevel) {
+        case 1:
+            tipPercentage = 0.05; // 5% tip for lowest satisfaction
+            break;
+        case 2:
+            tipPercentage = 0.1; // 10% tip for moderate satisfaction
+            break;
+        case 3:
+            tipPercentage = 0.15; // 15% tip for average satisfaction
+            break;
+        case 4:
+            tipPercentage = 0.2; // 20% tip for good satisfaction
+            break;
+        case 5:
+            tipPercentage = 0.25; // 25% tip for excellent satisfaction
+            break;
+        default:
+            tipPercentage = 0.15; // Default to 15% for average satisfaction
+    }
+
+    // Calculate total tip
+    const tipAmount = totalBill * tipPercentage;
+
+    // Optionally, split the bill among the specified number of people
+    const totalAmount = totalBill + tipAmount;
+    const perPersonAmount = totalAmount / numOfPeople;
+
+    return {
+        tipAmount: tipAmount,
+        totalAmount: totalAmount,
+        perPersonAmount: perPersonAmount
+    };
+}
+
+// Example usage:
+const totalBill = 100; // Example total bill amount
+const satisfactionLevel = 4; // Example satisfaction level
+const numOfPeople = 2; // Example number of people splitting the bill
+
+const tipDetails = calculateTip(totalBill, satisfactionLevel, numOfPeople);
+console.log(tipDetails);
